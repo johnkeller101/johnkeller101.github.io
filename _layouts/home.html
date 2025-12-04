@@ -1,37 +1,29 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html lang="en-us">
 
-<div class="row g-5 mb-5">
-  <div class="col-md-6">
-    <h3 class="fw-bold" style="margin-bottom: 25px;">About</h3>
-    {{ content }}
-  </div>
-  <div class="col-md-6">
-    <img src="{{ site.github.url }}/assets/img/profile.jpg" alt="John Keller" width="100%">
-  </div>
-</div>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-{% if site.posts.size > 0 %}
-<div class="row g-5 mb-5">
-  <div class="col-md-12">
-    <h3 class="fw-bold border-bottom pb-3 mb-5">Updates</h3>
-    {% for post in site.posts %}
-      <p><a href="{{ post.url }}">{{ post.title }}</a> - {{ post.date | date: "%B %-d, %Y" }}</p>
-    {% endfor %}
-  </div>
-</div>
-{% endif %}
+    <title>{{ site.title | default: "My Apps" }}</title>
+    <meta name="description" content="{{ site.description }}">
 
-{% if site.data.news.size > 0 %}
-<div class="row g-5 mb-5">
-  <div class="col-md-12">
-    <h3 class="fw-bold border-bottom pb-3 mb-5">In The News</h3>
-    {% for item in site.data.news %}
-      <p>{{ item.date | date: "%-m/%-d/%y" }} - <a href="{{ item.url }}">{{ item.title }} ({{ item.publication }})</a></p>
-    {% endfor %}
-  </div>
-</div>
-{% endif %}
+    <link rel="stylesheet" href="{{ '/main.css' | relative_url }}">
+</head>
 
-{% include sponsors.html %}
+<body class="home-page">
+    <div class="home-container">
+        <main class="app-grid">
+            {% for app in site.data.apps %}
+            <a href="{{ site.baseurl }}/apps/{{ app.slug }}/" class="app-item">
+                <div class="app-icon-wrapper">
+                    <img class="app-icon" src="{{ app.icon | relative_url }}" alt="{{ app.name }} icon">
+                </div>
+                <span class="app-name">{{ app.name }}</span>
+            </a>
+            {% endfor %}
+        </main>
+    </div>
+</body>
+</html>

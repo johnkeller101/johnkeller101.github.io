@@ -4,10 +4,10 @@
 {% include head.html %}
 
 <body>
-    <div class="imageWrapper">
+    <div class="imageWrapper" {% if page.cover_image %}style="background-image: linear-gradient(rgba({{ site.cover_overlay_color | remove: '#' | slice: 0, 2 | prepend: '0x' | plus: 0 }}, {{ site.cover_overlay_color | remove: '#' | slice: 2, 2 | prepend: '0x' | plus: 0 }}, {{ site.cover_overlay_color | remove: '#' | slice: 4, 2 | prepend: '0x' | plus: 0 }}, {{ site.cover_overlay_transparency }}), rgba({{ site.cover_overlay_color | remove: '#' | slice: 0, 2 | prepend: '0x' | plus: 0 }}, {{ site.cover_overlay_color | remove: '#' | slice: 2, 2 | prepend: '0x' | plus: 0 }}, {{ site.cover_overlay_color | remove: '#' | slice: 4, 2 | prepend: '0x' | plus: 0 }}, {{ site.cover_overlay_transparency }})), url('{{ page.cover_image | relative_url }}')"{% endif %}>
             <div class="headerBackground">
                 <div class="container">
-                    {% include header.html %}
+                    {% include app_header.html %}
                     <div class="iphonePreview">
 
                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 0 0" style="position: absolute;">
@@ -19,11 +19,11 @@
                         <div class="videoContainer hidden">
                             <video class="screenvideo" autoplay="autoplay" controls="controls">
                             </video>
-                        </div>  
-                        
+                        </div>
+
                         <img class="iphoneScreen hidden" src="" alt="">
 
-                        {% include screencontent.html %}
+                        {% include app_screencontent.html %}
 
                     </div>
                     <div class="appInfo">
@@ -35,31 +35,35 @@
                                     </clipPath>
                                 </defs>
                             </svg>
-                            <img class="appIconLarge" src="{{ site.app_icon | relative_url }}">
+                            <img class="appIconLarge" src="{{ page.app_icon | default: page.icon | relative_url }}">
                         </div>
                         <div class="appNamePriceContainer">
                             <h1 class="appName">
-                                {{ site.app_name }}
+                                {{ page.app_name | default: page.title }}
                             </h1>
                             <h2 class="appPrice">
-                                {{ site.app_price }}
+                                {{ page.app_price }}
                             </h2>
                         </div>
                         <div class="appDescriptionContainer">
                             <p class ="appDescription">
-                                {{ site.app_description }}
+                                {{ page.app_description | default: page.description }}
                             </p>
                         </div>
                         <div class="downloadButtonsContainer">
-                            {% if site.playstore_link %}
-                                <a class="playStoreLink" href="{{site.playstore_link}}"><img class="playStore" src="assets/playstore.png"></a>
+                            {% if page.playstore_link %}
+                                <a class="playStoreLink" href="{{page.playstore_link}}"><img class="playStore" src="{{ site.baseurl }}/assets/playstore.png"></a>
                             {% endif %}
-                            <a class="appStoreLink" href="{{site.appstore_link}}"><img class="appStore" src="assets/appstore.png"></a>
+                            {% if page.appstore_link %}
+                                <a class="appStoreLink" href="{{page.appstore_link}}"><img class="appStore" src="{{ site.baseurl }}/assets/appstore.png"></a>
+                            {% endif %}
                         </div>
                     </div>
-                    {% include features.html %}
-                    {% include footer.html %}
-                    {% include appstoreimages.html %}
+                    {% include app_features.html %}
+                    {% include app_footer.html %}
+                    {% if page.ios_app_id %}
+                        {% include appstoreimages.html %}
+                    {% endif %}
                 </div>
             </div>
         </div>

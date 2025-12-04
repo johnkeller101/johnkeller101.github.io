@@ -1,0 +1,41 @@
+# App Directory
+# Add new apps to this list. Each app will appear on the home page grid.
+
+- name: CuffMate
+  slug: cuffmate
+  tagline: Control your SAGA BFR cuffs
+  description: A powerful iOS app for controlling SAGA BFR (Blood Flow Restriction) cuffs via Bluetooth. Features limb occlusion pressure calibration, timed and set-based workouts, Live Activity support, workout history, and iCloud sync.
+  icon: assets/apps/cuffmate/icon.png
+  # ios_app_id:                                 # Add iOS app ID when available to auto-fetch metadata
+  # ios_app_country: us
+  # appstore_link:                              # Auto-populates from iOS ID, or set manually
+  # playstore_link:
+  features:
+    - title: Bluetooth Control
+      description: Seamless device discovery and connection to SAGA BFR cuffs.
+      fontawesome_icon_name: bluetooth-b
+
+    - title: LOP Calibration
+      description: Precise limb occlusion pressure calibration for safe and effective training.
+      fontawesome_icon_name: crosshairs
+
+    - title: Smart Workouts
+      description: Timed and set-based workout modes to match your training style.
+      fontawesome_icon_name: stopwatch
+
+    - title: Live Activity
+      description: Track your workout from Lock Screen and Dynamic Island.
+      fontawesome_icon_name: mobile-screen
+
+    - title: Workout History
+      description: Review past sessions and track your progress over time.
+      fontawesome_icon_name: chart-line
+
+    - title: iCloud Sync
+      description: Your data syncs seamlessly across all your devices.
+      fontawesome_icon_name: cloud
+
+  # Theme colors (optional - falls back to site defaults)
+  # cover_image: assets/apps/cuffmate/header.png
+  # device_color: black
+  # link_color: "#1d63ea"
